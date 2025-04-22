@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Felicidad</title>
+  <link rel="stylesheet" href="mi_felicidad.css">
+</head>
+<body>
+  <h1 class="gallery-title">Nuestros momentos más bonitos ❤️</h1>
+
+  <div class="slideshow-container">
+    <!-- Immagini della tua galleria -->
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/76TynJKs/Immagine-Whats-App-2025-04-21-ore-21-49-22-1849265a.jpg" alt="Momento 1" class="slide-image">
+    </div>
+    
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/8CYSvmmf/Immagine-Whats-App-2025-04-21-ore-21-49-22-010e45cb.jpg" alt="Momento 2" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/pdrvy6zt/Immagine-Whats-App-2025-04-21-ore-21-49-22-5fea5bdd.jpg" alt="Momento 3" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/Bb9fYZyq/Immagine-Whats-App-2025-04-21-ore-21-49-22-68c57331.jpg" alt="Momento 4" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/1XGhLhhD/Immagine-Whats-App-2025-04-21-ore-21-49-22-a69e557f.jpg" alt="Momento 5" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/XNdbZFGX/Immagine-Whats-App-2025-04-21-ore-21-49-22-aacc7267.jpg" alt="Momento 6" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/5NJM80Lg/Immagine-Whats-App-2025-04-21-ore-21-49-22-add03c87.jpg" alt="Momento 7" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/hP0RsB0B/Immagine-Whats-App-2025-04-21-ore-21-49-22-c9288595.jpg" alt="Momento 8" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/HLrGT71Y/Immagine-Whats-App-2025-04-21-ore-21-49-22-d63de8c4.jpg" alt="Momento 9" class="slide-image">
+    </div>
+
+    <!-- Nuove immagini aggiunte -->
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/mg2f65dF/Immagine-Whats-App-2025-04-21-ore-21-49-22-ffa27f46.jpg" alt="Momento 10" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/htyWF1wZ/Immagine-Whats-App-2025-04-21-ore-21-56-43-2033a28c.jpg" alt="Momento 11" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/5tThyNfw/Immagine-Whats-App-2025-04-21-ore-21-56-43-ef91cceb.jpg" alt="Momento 12" class="slide-image">
+    </div>
+
+    <div class="slide fade">
+      <img src="https://i.postimg.cc/QCrvg49C/Immagine-Whats-App-2025-04-21-ore-21-56-43-f6ecc7fb.jpg" alt="Momento 13" class="slide-image">
+    </div>
+  </div>
+
+  <button onclick="window.history.back()" class="back-button">← pagina inicial</button>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000); // Cambia immagine ogni 3 secondi
+    }
+  </script>
+</body>
+</html>

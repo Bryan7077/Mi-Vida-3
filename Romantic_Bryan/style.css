@@ -1,0 +1,157 @@
+/* Stile generale */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+  background-image: url('https://i.pinimg.com/736x/40/37/a0/4037a0f0f888a87ab3e6d7228af9e546.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Sezione del titolo principale */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://i.pinimg.com/736x/1b/50/ae/1b50ae65b38e6ec211a4c9060cae7ab2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#main-title {
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic; /* Corsivo grassetto */
+  color: #d63384;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Effetto ombra */
+}
+
+/* Sezione immagine con cornice */
+.image-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.framed-image {
+  max-width: 60%; /* Dimensione regolata per l'immagine */
+  border-radius: 20px; /* Angoli arrotondati */
+  border: 10px solid #ff69b4; /* Bordo rosa */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Ombra per profondità */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Red_heart.svg/120px-Red_heart.svg.png'); /* Cornice cuoricini */
+  background-repeat: repeat;
+  background-size: 40px 40px;
+  padding: 15px;
+  margin: 0 auto; /* Centra l'immagine */
+}
+
+/* Sezione dedica */
+.dedica {
+  padding: 40px 20px;
+  font-size: 1.5rem;
+  color: #444;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  line-height: 1.8;
+}
+
+/* Sezione contatore */
+.counter-section {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.counter-title {
+  font-size: 1.8rem;
+  color: #d63384;
+  margin-bottom: 20px;
+}
+
+.counter-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.counter-table th, .counter-table td {
+  border: 2px solid #ff69b4;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.counter-table th {
+  background-color: #ff69b4;
+  color: white;
+}
+
+/* Sezione bottoni */
+.buttons {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#mi-felicidad, #mi-corazon {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 32px;
+  font-size: 1.4rem;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#mi-corazon {
+  background-color: #ff1493;
+}
+
+/* Effetto cuori bendati */
+.emoji-heart {
+  position: fixed;
+  font-size: 2rem;
+  animation: floatRandom 3s ease-in-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes floatRandom {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50vh) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Responsività per dispositivi mobili */
+@media (max-width: 768px) {
+  .framed-image {
+    max-width: 90%; /* Ridimensiona l'immagine su dispositivi piccoli */
+  }
+
+  .counter-table {
+    width: 100%; /* La tabella si adatta alla larghezza dello schermo */
+  }
+
+  #main-title {
+    font-size: 2.5rem; /* Ridimensiona il titolo su dispositivi piccoli */
+  }
+}
