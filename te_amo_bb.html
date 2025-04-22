@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Per la mia principessa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="side-strip left-strip"></div>
+  <div class="side-strip right-strip"></div>
+
+  <div class="hero">
+    <h1 id="main-title">TE AMO PRINCIPESSA!!!</h1>
+  </div>
+
+  <div class="image-section">
+    <img src="https://i.pinimg.com/736x/64/81/f8/6481f86f95d800a279fb529b2ebb859c.jpg" alt="Un ricordo dolce" class="framed-image" />
+  </div>
+
+  <div class="dedica">
+    <p>
+      For you my life💋.<br>
+T’amo mucho mi hermosa linda!! , espero que no se te olvide nunca.<br> 
+<br>Mill beshosss para TUUU!!!💋<br>
+T’amo❤‍🩹 y te amare cada segundo que pase, aunque estemos peleados xd.<br>
+Muchas grasias por todos los momentos bonito que estuviste a mi lado.<br>
+<br><br>
+T’amooo!!!❤‍🩹
+    </p>
+  </div>
+
+  <div class="counter-section">
+    <h2 class="counter-title">Te amo desde... y te seguiré amando cada segundo que pase...</h2>
+    <table class="counter-table">
+      <tr>
+        <th>Años</th>
+        <th>Meses</th>
+        <th>Días</th>
+        <th>Horas</th>
+        <th>Minutos</th>
+        <th>Segundos</th>
+      </tr>
+      <tr>
+        <td id="years"><b>0</b></td>
+        <td id="months"><b>0</b></td>
+        <td id="days"><b>0</b></td>
+        <td id="hours"><b>0</b></td>
+        <td id="minutes"><b>0</b></td>
+        <td id="seconds"><b>0</b></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="buttons">
+    <a id="mi-felicidad" href="mi_felicidad.html" >mi felicidad</a>
+    <button id="mi-corazon">mi corazon</button>
+  </div>
+
+  <audio id="background-music" autoplay loop>
+    <source src="musica_romantica.mp3" type="audio/mpeg">
+    Il tuo browser non supporta l'audio HTML5.
+  </audio>
+
+  <script>
+    // Funzione per calcolare il tempo trascorso
+    const startDate = new Date("2024-08-22T00:00:00");
+
+function updateCounter() {
+    const now = new Date();
+    
+    // Calcolo della differenza totale in millisecondi
+    const diff = now - startDate;
+
+    // Calcolo esatto di anni, mesi e giorni
+    const startYear = startDate.getFullYear();
+    const startMonth = startDate.getMonth();
+    const startDay = startDate.getDate();
+
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    const currentDay = now.getDate();
+
+    let years = currentYear - startYear;
+    let months = currentMonth - startMonth;
+    let days = currentDay - startDay;
+
+    // Se i giorni sono negativi, sottrai un mese e correggi i giorni
+    if (days < 0) {
+        months -= 1;
+        const previousMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+        days += previousMonthDays;
+    }
+
+    // Se i mesi sono negativi, sottrai un anno e correggi i mesi
+    if (months < 0) {
+        years -= 1;
+        months += 12;
+    }
+
+    // Calcolo ore, minuti e secondi
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    // Aggiorna la tabella
+    document.getElementById("years").innerHTML = `<b>${years}</b>`;
+    document.getElementById("months").innerHTML = `<b>${months}</b>`;
+    document.getElementById("days").innerHTML = `<b>${days}</b>`;
+    document.getElementById("hours").innerHTML = `<b>${hours}</b>`;
+    document.getElementById("minutes").innerHTML = `<b>${minutes}</b>`;
+    document.getElementById("seconds").innerHTML = `<b>${seconds}</b>`;
+}
+
+    // Aggiorna il contatore ogni secondo
+    setInterval(updateCounter, 1000);
+
+    // Effetto dei cuori bendati
+    const corazonBtn = document.getElementById("mi-corazon");
+    corazonBtn.addEventListener("click", () => {
+      for (let i = 0; i < 100; i++) { // Genera molti cuori
+        const heart = document.createElement("div");
+        heart.classList.add("emoji-heart");
+        heart.innerHTML = "&#10084;&#65039;&#8205;&#129657;"; // Cuore bendato di iOS
+        heart.style.left = Math.random() * window.innerWidth + "px"; // Posizione casuale orizzontale
+        heart.style.top = Math.random() * window.innerHeight + "px"; // Posizione casuale verticale
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 3000); // Rimuove il cuore dopo 3 secondi
+      }
+    });
+  </script>
+</body>
+</html>
