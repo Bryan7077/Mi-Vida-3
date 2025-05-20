@@ -1,151 +1,567 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Per la mia principessa</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="side-strip left-strip"></div>
-  <div class="side-strip right-strip"></div>
-
-  <div class="hero">
-    <h1 id="main-title">TE AMO PRINCIPESSA!!!</h1>
-  </div>
-
-  <div class="image-section">
-    <img src="https://i.pinimg.com/736x/64/81/f8/6481f86f95d800a279fb529b2ebb859c.jpg" alt="Un ricordo dolce" class="framed-image" />
-  </div>
-
-  <div class="dedica">
-    <p>
-      For you my life💋.<br>
-T’amo mucho mi hermosa linda!! Y espero que no se te olvide nunca.<br> 
-<br>Mill beshosss para TUUU!!!💋<br>
-T’amo❤‍🩹 y te amare cada segundo que pase, aunque estemos peleados xd.<br>
-Muchas grasias por todos los momentos bonito que estuviste a mi lado.<br>
-<br><br>
-T’amooo!!!❤‍🩹
-    </p>
-  </div>
-
-  <div class="counter-section">
-    <h2 class="counter-title top-title">Te amo desde...</h2> <!-- Titolo sopra -->
-    
-    <div class="counter-container">
-      <div class="counter-circle">
-        <p class="counter-title">Años</p>
-        <p id="years" class="counter-value">0</p>
-      </div>
-      <div class="counter-circle">
-        <p class="counter-title">Meses</p>
-        <p id="months" class="counter-value">0</p>
-      </div>
-      <div class="counter-circle">
-        <p class="counter-title">Días</p>
-        <p id="days" class="counter-value">0</p>
-      </div>
-    </div>
-  
-    <div class="counter-container">
-      <div class="counter-circle">
-        <p class="counter-title">Horas</p>
-        <p id="hours" class="counter-value">0</p>
-      </div>
-      <div class="counter-circle">
-        <p class="counter-title">Minutos</p>
-        <p id="minutes" class="counter-value">0</p>
-      </div>
-      <div class="counter-circle">
-        <p class="counter-title">Segundos</p>
-        <p id="seconds" class="counter-value">0</p>
-      </div>
-    </div>
-  
-    <h2 class="counter-title bottom-title">Y te seguiré amando cada segundo que pase...</h2> <!-- Titolo sotto -->
-  </div>
-  
-  
-  
-
-  <div class="buttons">
-    <a id="mi-felicidad" href="mi_felicidad.html" >mi felicidad</a>
-    <button id="mi-corazon">mi corazon</button>
-  </div>
-
-  <audio id="background-music" autoplay loop>
-    <source src="musica_romantica.mp3" type="audio/mpeg">
-    Il tuo browser non supporta l'audio HTML5.
-  </audio>
-
-  <script>
-    // Funzione per calcolare il tempo trascorso
-    const startDate = new Date("2024-08-22T00:00:00");
-
-function updateCounter() {
-    const now = new Date();
-    
-    // Calcolo della differenza totale in millisecondi
-    const diff = now - startDate;
-
-    // Calcolo esatto di anni, mesi e giorni
-    const startYear = startDate.getFullYear();
-    const startMonth = startDate.getMonth();
-    const startDay = startDate.getDate();
-
-    const currentYear = now.getFullYear();
-    const currentMonth = now.getMonth();
-    const currentDay = now.getDate();
-
-    let years = currentYear - startYear;
-    let months = currentMonth - startMonth;
-    let days = currentDay - startDay;
-
-    // Se i giorni sono negativi, sottrai un mese e correggi i giorni
-    if (days < 0) {
-        months -= 1;
-        const previousMonthDays = new Date(currentYear, currentMonth, 0).getDate();
-        days += previousMonthDays;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Amorcito SPA</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fff0f6 0%, #ffe0ec 100%);
+      min-height: 100vh;
+      transition: background 1s;
     }
 
-    // Se i mesi sono negativi, sottrai un anno e correggi i mesi
-    if (months < 0) {
-        years -= 1;
-        months += 12;
+    .amor-bg {
+      background: url('https://i.postimg.cc/DzfwqzMk/Kuromi-y-badtz-maru.jpg') center center/cover no-repeat fixed !important;
     }
 
-    // Calcolo ore, minuti e secondi
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    .felicidad-bg {
+      background: url('https://i.postimg.cc/KY9vQy6K/Kuromi-and-Badtz-Maru-Wallpaper.jpg') center center/cover no-repeat fixed !important;
+      min-height: 100vh;
+      padding-bottom: 2rem;
+      transition: background 1s;
+    }
 
-    // Aggiorna la tabella
-    document.getElementById("years").innerHTML = `<b>${years}</b>`;
-    document.getElementById("months").innerHTML = `<b>${months}</b>`;
-    document.getElementById("days").innerHTML = `<b>${days}</b>`;
-    document.getElementById("hours").innerHTML = `<b>${hours}</b>`;
-    document.getElementById("minutes").innerHTML = `<b>${minutes}</b>`;
-    document.getElementById("seconds").innerHTML = `<b>${seconds}</b>`;
-}
+    .nav {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: rgba(255, 179, 198, 0.8);
+      box-shadow: 0 2px 8px #ffd6e0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-    // Aggiorna il contatore ogni secondo
-    setInterval(updateCounter, 1000);
+    .nav button {
+      font-size: 1.1rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      border: none;
+      background: #ffb3c6;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-    // Effetto dei cuori bendati
-    const corazonBtn = document.getElementById("mi-corazon");
-    corazonBtn.addEventListener("click", () => {
-      for (let i = 0; i < 100; i++) { // Genera molti cuori
-        const heart = document.createElement("div");
-        heart.classList.add("emoji-heart");
-        heart.innerHTML = "&#10084;&#65039;&#8205;&#129657;"; // Cuore bendato di iOS
-        heart.style.left = Math.random() * window.innerWidth + "px"; // Posizione casuale orizzontale
-        heart.style.top = Math.random() * window.innerHeight + "px"; // Posizione casuale verticale
-        document.body.appendChild(heart);
+    .nav button.active,
+    .nav button:hover {
+      background: #ff4d6d;
+      color: #fff;
+    }
 
-        setTimeout(() => heart.remove(), 3000); // Rimuove il cuore dopo 3 secondi
+    #app {
+      min-height: 80vh;
+    }
+
+    /* HOME STYLE */
+    .side-strip {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      background: linear-gradient(180deg, #ffb3c6 0%, #fff0f6 100%);
+      z-index: 1;
+    }
+
+    .left-strip {
+      left: 0;
+    }
+
+    .right-strip {
+      right: 0;
+    }
+
+    .hero {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    #main-title {
+      font-size: 2.5rem;
+      color: #ff4d6d;
+      text-shadow: 1px 2px 8px #fff0f6;
+      margin-bottom: 0.5rem;
+    }
+
+    .image-section {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 1rem 0;
+    }
+
+    .framed-image {
+      border: 8px solid #ffb3c6;
+      border-radius: 30px;
+      box-shadow: 0 4px 24px #ffd6e0;
+      width: 320px;
+      max-width: 90vw;
+      background: #fff;
+    }
+
+    .dedica {
+      background: rgba(255, 240, 246, 0.8);
+      margin: 1rem auto;
+      max-width: 500px;
+      border-radius: 20px;
+      padding: 1.2rem 2rem;
+      font-size: 1.2rem;
+      color: #c9184a;
+      box-shadow: 0 2px 12px #ffd6e0;
+      text-align: center;
+    }
+
+    .counter-section {
+      margin: 2rem auto 1rem auto;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 2px 12px #ffd6e0;
+      padding: 1rem 2rem;
+    }
+
+    .counter-title {
+      color: #c9184a;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .counter-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .counter-table th,
+    .counter-table td {
+      padding: 0.5rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0 1rem 0;
+    }
+
+    .buttons a,
+    .buttons button {
+      background: #ffb3c6;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 0.7rem 1.7rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .buttons a:hover,
+    .buttons button:hover {
+      background: #ff4d6d;
+    }
+
+    .emoji-heart {
+      position: fixed;
+      font-size: 2rem;
+      pointer-events: none;
+      z-index: 9999;
+      animation: floatUp 3s linear;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
       }
-    });
+    }
+
+    /* MI FELICIDAD STYLE - NUOVA VERSIONE */
+    .slideshow-container {
+      max-width: 480px;
+      width: 98vw;
+      margin: 3rem auto 2rem auto;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 40px;
+      box-shadow: 0 12px 40px 0 #c9184a33, 0 2px 8px #fff;
+      padding: 2.5rem 1.5rem 4.5rem 1.5rem;
+      position: relative;
+      overflow: visible;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.4s;
+    }
+
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: opacity 1s;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      animation: zoomIn 1.2s;
+      z-index: 2;
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .slide-image {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      max-height: 80vh;
+      aspect-ratio: 3 / 4;
+      object-fit: contain;
+      border-radius: 32px;
+      border: 4px solid #ffb3c6;
+      box-shadow: 0 8px 32px #c9184a33, 0 2px 8px #fff;
+      margin-bottom: 1.2rem;
+      background: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .slide-image:hover {
+      transform: scale(1.04) rotate(1deg);
+      box-shadow: 0 16px 48px #c9184a44;
+    }
+
+    .slide-caption {
+      color: #c9184a;
+      font-size: 1.18rem;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 18px;
+      padding: 0.6rem 1.5rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      font-family: 'Montserrat', 'Segoe UI', sans-serif;
+      box-shadow: 0 1px 8px #ffd6e0;
+      letter-spacing: 0.5px;
+    }
+
+    .slideshow-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1.7rem;
+      z-index: 3;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1.5rem;
+    }
+
+    .slideshow-controls button {
+      background: #ffb3c6;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      font-size: 1.7rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 2px 8px #ffd6e0;
+    }
+
+    .slideshow-controls button:hover {
+      background: #ff4d6d;
+      transform: scale(1.13);
+    }
+
+    .gallery-title {
+      text-align: center;
+      color: #c9184a;
+      font-size: 2rem;
+      margin-top: 1rem;
+      text-shadow: 1px 2px 8px #fff0f6;
+    }
+
+    @media (max-width: 600px) {
+      .slideshow-container {
+        padding: 1rem 0.2rem 3.5rem 0.2rem;
+        min-height: 320px;
+        border-radius: 18px;
+      }
+
+      .slide-image {
+        max-width: 98vw;
+        aspect-ratio: 1/1;
+        border-radius: 18px;
+      }
+
+      .slideshow-controls {
+        bottom: 0.7rem;
+      }
+    }
+
+    /* Cuoricini che cadono */
+    .falling-heart {
+      position: fixed;
+      top: -30px;
+      font-size: 2rem;
+      color: #ff4d6d;
+      animation: fall 4s linear forwards;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .falling-heart::before {
+      content: "❤️";
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="bg-music" src="Canserbero - Querer Querernos (Versión Acústica).mp3" autoplay loop></audio>
+  <div class="nav">
+    <button id="homeBtn" class="active">Mi Amorcito</button>
+    <button id="galleryBtn">Mi Felicidad</button>
+    <button onclick="toggleMusic()">🎵 Play/Pausa Musica</button>
+  </div>
+  <div id="app"></div>
+  <script>
+    // SPA Routing
+    const app = document.getElementById('app');
+    const homeBtn = document.getElementById('homeBtn');
+    const galleryBtn = document.getElementById('galleryBtn');
+
+    function showHome() {
+      document.body.className = "amor-bg";
+      homeBtn.classList.add('active');
+      galleryBtn.classList.remove('active');
+      app.innerHTML = `
+        <div class="side-strip left-strip"></div>
+        <div class="side-strip right-strip"></div>
+        <div class="hero">
+          <h1 id="main-title">TE AMO PRINCIPESSA!!!</h1>
+        </div>
+        <div class="image-section">
+          <img src="https://i.pinimg.com/736x/64/81/f8/6481f86f95d800a279fb529b2ebb859c.jpg" alt="Un ricordo dolce" class="framed-image" />
+        </div>
+        <div class="dedica">
+          <p>
+            For you my life💋.<br>
+            T’amo mucho mi hermosa linda!! , espero che non si te olvide nunca.<br> 
+            <br>Mill beshosss para TUUU!!!💋<br>
+            T’amo❤‍🩹 y te amare cada secondo che pase, aunque estemos peleados xd.<br>
+            Muchas grasias por todos los momentos bonito che estuviste a mi lado.<br>
+            <br><br>
+            T’amooo!!!❤‍🩹
+          </p>
+        </div>
+        <div class="counter-section">
+          <h2 class="counter-title">Te amo desde... y te seguiré amando cada secondo che pase...</h2>
+          <table class="counter-table">
+            <tr>
+              <th>Años</th>
+              <th>Meses</th>
+              <th>Días</th>
+              <th>Horas</th>
+              <th>Minutos</th>
+              <th>Segundos</th>
+            </tr>
+            <tr>
+              <td id="years"><b>0</b></td>
+              <td id="months"><b>0</b></td>
+              <td id="days"><b>0</b></td>
+              <td id="hours"><b>0</b></td>
+              <td id="minutes"><b>0</b></td>
+              <td id="seconds"><b>0</b></td>
+            </tr>
+          </table>
+        </div>
+        <div class="buttons">
+          <a id="mi-felicidad" href="#">mi felicidad</a>
+          <button id="mi-corazon">mi corazon</button>
+        </div>
+      `;
+      // Counter
+      const startDate = new Date("2024-08-22T00:00:00");
+      function updateCounter() {
+        const now = new Date();
+        const diff = now - startDate;
+        const startYear = startDate.getFullYear();
+        const startMonth = startDate.getMonth();
+        const startDay = startDate.getDate();
+        const currentYear = now.getFullYear();
+        const currentMonth = now.getMonth();
+        const currentDay = now.getDate();
+        let years = currentYear - startYear;
+        let months = currentMonth - startMonth;
+        let days = currentDay - startDay;
+        if (days < 0) {
+          months -= 1;
+          const previousMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+          days += previousMonthDays;
+        }
+        if (months < 0) {
+          years -= 1;
+          months += 12;
+        }
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById("years").innerHTML = `<b>${years}</b>`;
+        document.getElementById("months").innerHTML = `<b>${months}</b>`;
+        document.getElementById("days").innerHTML = `<b>${days}</b>`;
+        document.getElementById("hours").innerHTML = `<b>${hours}</b>`;
+        document.getElementById("minutes").innerHTML = `<b>${minutes}</b>`;
+        document.getElementById("seconds").innerHTML = `<b>${seconds}</b>`;
+      }
+      setInterval(updateCounter, 1000);
+      updateCounter();
+      // Cuori bendati
+      const corazonBtn = document.getElementById("mi-corazon");
+      corazonBtn.addEventListener("click", () => {
+        for (let i = 0; i < 100; i++) {
+          const heart = document.createElement("div");
+          heart.classList.add("emoji-heart");
+          heart.innerHTML = "&#10084;&#65039;&#8205;&#129657;";
+          heart.style.left = Math.random() * window.innerWidth + "px";
+          heart.style.top = Math.random() * window.innerHeight + "px";
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 3000);
+        }
+      });
+      // Navigazione SPA per "mi felicidad"
+      document.getElementById("mi-felicidad").onclick = (e) => {
+        e.preventDefault();
+        showGallery();
+      };
+    }
+
+    function showGallery() {
+      document.body.className = "felicidad-bg";
+      homeBtn.classList.remove('active');
+      galleryBtn.classList.add('active');
+      app.innerHTML = `
+        <h1 class="gallery-title">❤️ Mi Felicidad ❤️</h1>
+        <div class="slideshow-container">
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/76TynJKs/Immagine-Whats-App-2025-04-21-ore-21-49-22-1849265a.jpg" alt="Momento 1"><div class="slide-caption">Il nostro primo sorriso insieme</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/8CYSvmmf/Immagine-Whats-App-2025-04-21-ore-21-49-22-010e45cb.jpg" alt="Momento 2"><div class="slide-caption">Un abbraccio che non dimentico</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/pdrvy6zt/Immagine-Whats-App-2025-04-21-ore-21-49-22-5fea5bdd.jpg" alt="Momento 3"><div class="slide-caption">Risate infinite</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/8zkWcZ4H/Immagine-Whats-App-2025-05-20-ore-19-10-30-0c4b7129.jpg" alt="Momento 4"><div class="slide-caption">Un giorno speciale</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/T2mn4Lhr/Immagine-Whats-App-2025-05-20-ore-19-10-30-aea71858.jpg" alt="Momento 5"><div class="slide-caption">Solo noi due</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/BnhFK2wG/Immagine-Whats-App-2025-05-20-ore-19-10-30-f665d47d.jpg" alt="Momento 6"><div class="slide-caption">Momenti indimenticabili</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/5NJM80Lg/Immagine-Whats-App-2025-04-21-ore-21-49-22-add03c87.jpg" alt="Momento 7"><div class="slide-caption">Il tuo sorriso, la mia felicità</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/hP0RsB0B/Immagine-Whats-App-2025-04-21-ore-21-49-22-c9288595.jpg" alt="Momento 8"><div class="slide-caption">Sempre insieme</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/HLrGT71Y/Immagine-Whats-App-2025-04-21-ore-21-49-22-d63de8c4.jpg" alt="Momento 9"><div class="slide-caption">Un altro ricordo</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/5NV8d4FD/Immagine-Whats-App-2025-05-20-ore-19-10-30-9e3356ea.jpg" alt="Momento 10"><div class="slide-caption">Giornate felici</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/htyWF1wZ/Immagine-Whats-App-2025-04-21-ore-21-56-43-2033a28c.jpg" alt="Momento 11"><div class="slide-caption">Ti amo ogni giorno di più</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/5tThyNfw/Immagine-Whats-App-2025-04-21-ore-21-56-43-ef91cceb.jpg" alt="Momento 12"><div class="slide-caption">Il nostro viaggio</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/QCrvg49C/Immagine-Whats-App-2025-04-21-ore-21-56-43-f6ecc7fb.jpg" alt="Momento 13"><div class="slide-caption">Sempre nel mio cuore</div></div>
+          <div class="slide"><img class="slide-image" src="https://i.postimg.cc/TYJgTzV1/Immagine-Whats-App-2025-05-20-ore-19-10-30-f00a8eb3.jpg" alt="Momento 14"><div class="slide-caption">Per sempre noi</div></div>
+          <div class="slideshow-controls">
+            <button id="prevSlide" title="Precedente">&#8592;</button>
+            <button id="pauseSlide" title="Pausa">&#10073;&#10073;</button>
+            <button id="nextSlide" title="Successiva">&#8594;</button>
+          </div>
+        </div>
+      `;
+      // Slideshow JS
+      let slideIndex = 0;
+      let slides = document.querySelectorAll('.slide');
+      let playing = true;
+      let slideTimer = null;
+
+      function showSlide(idx) {
+        slides.forEach((s, i) => {
+          s.classList.remove('active');
+          if (i === idx) s.classList.add('active');
+        });
+      }
+      function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+      }
+      function prevSlide() {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+      }
+      function playSlides() {
+        playing = true;
+        slideTimer = setInterval(nextSlide, 3000);
+      }
+      function pauseSlides() {
+        playing = false;
+        clearInterval(slideTimer);
+      }
+      document.getElementById('nextSlide').onclick = () => {
+        nextSlide();
+        if (playing) { pauseSlides(); playSlides(); }
+      };
+      document.getElementById('prevSlide').onclick = () => {
+        prevSlide();
+        if (playing) { pauseSlides(); playSlides(); }
+      };
+      document.getElementById('pauseSlide').onclick = () => {
+        if (playing) {
+          pauseSlides();
+          document.getElementById('pauseSlide').innerHTML = "&#9654;";
+        } else {
+          playSlides();
+          document.getElementById('pauseSlide').innerHTML = "&#10073;&#10073;";
+        }
+      };
+      showSlide(slideIndex);
+      playSlides();
+    }
+
+    // Cuoricini che cadono sempre
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'falling-heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 500);
+
+    // Musica Play/Pausa
+    function toggleMusic() {
+      const audio = document.getElementById('bg-music');
+      if (audio.paused) audio.play();
+      else audio.pause();
+    }
+
+    // SPA navigation
+    homeBtn.onclick = showHome;
+    galleryBtn.onclick = showGallery;
+
+    // Avvio Home all'apertura
+    showHome();
   </script>
 </body>
+
 </html>
